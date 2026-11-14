@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import static java.util.Arrays.stream;
 
 @Service
 public class ProductService {
@@ -21,6 +24,10 @@ public class ProductService {
         product.setId(nextId);
         return product;
 
+    }
+
+    public Optional<Product> getProductById(Long id){
+        return products.stream().filter(p -> p.getId().equals(id)).findFirst();
     }
 
 }
