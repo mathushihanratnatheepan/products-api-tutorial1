@@ -25,6 +25,15 @@ public class ProductController {
     public Product addProduct(@RequestBody Product product) {
         return productService.addProduct(product);
     }
+    @DeleteMapping("/{id}")
+    public void deleteProductById(@PathVariable Long id) {
+        productService.deleteProduct(id);
+    }
+
+    @GetMapping("/search")
+    public List<Product> searchProducts(@RequestParam String name) {
+        return productService.findByName(name);
+    }
 
 
 
